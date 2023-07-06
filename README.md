@@ -29,12 +29,14 @@ To run the Todo List App locally, follow these steps:
 
 ## Project Structure
 
-The project structure is organized as follows:
-
-├── index.html # Entry point of the application
-├── styles.css # CSS styles for the app
-├── script.js # JavaScript code for the app
-└── README.md # Project documentation.
+- app.js
+- index.html
+- style.css
+- components
+  - button.js
+  - filter.js
+- utils
+  - localStorage.js
 
 ## Markdown
 
