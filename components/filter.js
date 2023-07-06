@@ -1,3 +1,7 @@
+/**
+ * Filters the todos based on the selected option.
+ */
+
 export function filterTodos(todos, selectedOption) {
   todos.forEach((todo) => {
     switch (selectedOption) {
