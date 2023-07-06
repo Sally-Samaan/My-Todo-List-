@@ -1,4 +1,5 @@
 import createButton from "./components/button.js";
+import { filterTodos } from "./components/filter.js";
 import {
   saveLocalTodos,
   removeLocalTodos,
@@ -94,23 +95,7 @@ function filterTodo() {
   const todos = Array.from(todoList.childNodes);
   const selectedOption = filterOption.value;
 
-  todos.forEach((todo) => {
-    switch (selectedOption) {
-      case "all":
-        todo.style.display = "flex";
-        break;
-      case "completed":
-        todo.style.display = todo.classList.contains("completed")
-          ? "flex"
-          : "none";
-        break;
-      case "uncompleted":
-        todo.style.display = !todo.classList.contains("completed")
-          ? "flex"
-          : "none";
-        break;
-    }
-  });
+  filterTodos(todos, selectedOption);
 }
 
 /**
