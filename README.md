@@ -2,7 +2,8 @@
 
 The Todo List App is a simple web application that allows users to manage their daily tasks by creating a todo list. Users can add, edit, delete, and mark tasks as completed. The app provides a filter option to view all tasks, completed tasks, or uncompleted tasks.
 
-![Todo List App Screenshot](app-screenshot.png)
+![Todo List App Screenshot]()<img width="1776" alt="Screenshot 2023-07-06 at 13 52 40" src="https://github.com/Sally-Samaan/My-Todo-List-/assets/114828455/e847bdd4-bdf3-489c-8682-3735e338418c">
+
 
 ## Features
 
