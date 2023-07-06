@@ -11,6 +11,12 @@ todoList.addEventListener("click", deleteCheck);
 filterOption.addEventListener("change", filterTodo);
 
 // Functions
+/**
+ * Creates a new todo element.
+ * @param {string} text - The text content of the todo.
+ * @returns {HTMLDivElement} - The created todo element.
+ */
+
 function createTodoElement(text) {
   const todoDiv = document.createElement("div");
   todoDiv.classList.add("todo");
@@ -28,6 +34,13 @@ function createTodoElement(text) {
   return todoDiv;
 }
 
+/**
+ * Creates a button element for the todo.
+ * @param {string} action - The action associated with the button.
+ * @param {string} icon - The class name for the button's icon.
+ * @returns {HTMLButtonElement} - The created button element.
+ */
+
 function createButton(action, icon) {
   const button = document.createElement("button");
   button.innerHTML = `<i class="fa-solid ${icon}"></i>`;
@@ -35,6 +48,10 @@ function createButton(action, icon) {
   button.setAttribute("data-action", action);
   return button;
 }
+
+/**
+ * Adds a new todo to the list.
+ */
 
 function addTodo() {
   event.preventDefault();
@@ -50,6 +67,11 @@ function addTodo() {
 
   todoInput.value = "";
 }
+
+/**
+ * Handles the delete, complete, and edit actions for a todo.
+ * @param {Event} event - The click event object.
+ */
 
 function deleteCheck(event) {
   const item = event.target;
@@ -70,6 +92,10 @@ function deleteCheck(event) {
     editTodo(todo);
   }
 }
+
+/**
+ * Filters the todos based on the selected option.
+ */
 
 function filterTodo() {
   const todos = Array.from(todoList.childNodes);
@@ -94,6 +120,11 @@ function filterTodo() {
   });
 }
 
+/**
+ * Saves the todo to the local storage.
+ * @param {string} todoText - The text content of the todo.
+ */
+
 function saveLocalTodos(todoText) {
   let todos = localStorage.getItem("todos")
     ? JSON.parse(localStorage.getItem("todos"))
@@ -101,6 +132,10 @@ function saveLocalTodos(todoText) {
   todos.push({ text: todoText, completed: false });
   localStorage.setItem("todos", JSON.stringify(todos));
 }
+
+/**
+ * Retrieves todos from local storage and displays them.
+ */
 
 function getTodos() {
   let todos = localStorage.getItem("todos")
@@ -115,6 +150,11 @@ function getTodos() {
     todoList.appendChild(todoDiv);
   });
 }
+
+/**
+ * Updates the state of the todo (completed or not) in local storage.
+ * @param {HTMLDivElement} todo - The todo element.
+ */
 
 function updateTodoState(todo) {
   const todoText = todo.querySelector(".todo-item").innerText;
@@ -131,6 +171,11 @@ function updateTodoState(todo) {
   localStorage.setItem("todos", JSON.stringify(todos));
 }
 
+/**
+ * Edits the text of the todo.
+ * @param {HTMLDivElement} todo - The todo element.
+ */
+
 function editTodo(todo) {
   const todoText = todo.querySelector(".todo-item").innerText;
   todoInput.value = todoText;
@@ -139,6 +184,11 @@ function editTodo(todo) {
   removeLocalTodos(todo);
   todo.remove();
 }
+
+/**
+ * Removes the todo from local storage.
+ * @param {HTMLDivElement} todo - The todo element.
+ */
 
 function removeLocalTodos(todo) {
   const todoText = todo.querySelector(".todo-item").innerText;
