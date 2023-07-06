@@ -95,8 +95,8 @@ form button:hover {
 }
 
 select {
-  /* -webkit-appearance: none;
-  -moz-appearance: none; */
+  -webkit-appearance: none;
+  -moz-appearance: none;
   outline: none;
   border: none;
 }
@@ -114,6 +114,7 @@ select {
 .select::after {
   content: "\25BC";
   position: absolute;
+  /* background-color: #fff; */
   color: #fda085;
   top: 0;
   right: 0;
@@ -126,14 +127,35 @@ select {
   color: #fff;
 }
 
-/* li::marker {
+li::marker {
   display: none;
   list-style: none;
   overflow: hidden;
-  unicode-bidi: isolate;
-  font-variant-numeric: tabular-nums;
-  text-transform: none;
-  text-indent: 0px !important;
-  text-align: start !important;
-  text-align-last: start !important;
-} */
+}
+
+/* Styles for 616x844 */
+@media (max-width: 616px) {
+  form {
+    flex-direction: column;
+    margin: 1rem;
+  }
+
+  form input,
+  form button {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  select {
+    width: 100%;
+    padding: 0.7rem;
+    font-size: 1rem;
+  }
+}
+
+/* Styles for 820x1180 */
+@media (min-width: 821px) and (max-width: 1180px) {
+  .todo-list {
+    min-width: 60%;
+  }
+}

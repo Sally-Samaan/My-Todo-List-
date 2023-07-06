@@ -43,3 +43,4 @@ The project structure is organized as follows:
 - The `README.md` file provides documentation and instructions for the app.
 
 Feel free to explore and modify the code to customize the app according to your needs.
+to the code.
