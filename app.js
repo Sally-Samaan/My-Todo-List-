@@ -4,6 +4,7 @@ import { handleTodoActions } from "./components/todoActions.js";
 import { saveLocalTodos, removeLocalTodos } from "./utils/localStorage.js";
 import { displayTodos } from "./components/todoList.js";
 import { editTodo } from "./components/editTodo.js";
+import { addTodo } from "./components/addTodo.js";
 
 // Selectors
 const todoInput = document.querySelector(".todo-input");
@@ -13,28 +14,24 @@ const filterOption = document.querySelector(".filter-todo");
 
 // Event Listeners
 document.addEventListener("DOMContentLoaded", getTodos);
-todoButton.addEventListener("click", addTodo);
+todoButton.addEventListener("click", handleAddTodo);
 todoList.addEventListener("click", deleteCheck);
 filterOption.addEventListener("change", filterTodo);
 
 // Functions
 
 /**
- * Adds a new todo to the list.
+ * Handles the add todo action.
+ * @param {Event} event - The click event object.
  */
-function addTodo() {
-  event.preventDefault();
-  const todoText = todoInput.value;
+function handleAddTodo() {
+  const todoText = todoInput.value.trim();
 
-  if (todoText.trim() === "") {
+  if (todoText === "") {
     return;
   }
 
-  const todoDiv = createTodoElement(todoText);
-  todoList.appendChild(todoDiv);
-  saveLocalTodos(todoText);
-
-  todoInput.value = "";
+  addTodo(todoText, todoList, todoInput);
 }
 
 /**

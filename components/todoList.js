@@ -1,4 +1,5 @@
 import { createTodoElement } from "./todoElement.js";
+import { addTodo } from "../components/addTodo.js";
 
 export function displayTodos(todoList) {
   let todos = localStorage.getItem("todos")
