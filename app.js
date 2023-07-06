@@ -1,3 +1,10 @@
+import createButton from "./components/button.js";
+import {
+  saveLocalTodos,
+  removeLocalTodos,
+  updateTodoState,
+} from "./utils/localStorage.js";
+
 // Selectors
 const todoInput = document.querySelector(".todo-input");
 const todoButton = document.querySelector(".todo-button");
@@ -11,6 +18,7 @@ todoList.addEventListener("click", deleteCheck);
 filterOption.addEventListener("change", filterTodo);
 
 // Functions
+
 /**
  * Creates a new todo element.
  * @param {string} text - The text content of the todo.
@@ -32,21 +40,6 @@ function createTodoElement(text) {
 
   todoDiv.append(editButton, completedButton, trashButton);
   return todoDiv;
-}
-
-/**
- * Creates a button element for the todo.
- * @param {string} action - The action associated with the button.
- * @param {string} icon - The class name for the button's icon.
- * @returns {HTMLButtonElement} - The created button element.
- */
-
-function createButton(action, icon) {
-  const button = document.createElement("button");
-  button.innerHTML = `<i class="fa-solid ${icon}"></i>`;
-  button.classList.add(`${action}-btn`);
-  button.setAttribute("data-action", action);
-  return button;
 }
 
 /**
@@ -121,19 +114,6 @@ function filterTodo() {
 }
 
 /**
- * Saves the todo to the local storage.
- * @param {string} todoText - The text content of the todo.
- */
-
-function saveLocalTodos(todoText) {
-  let todos = localStorage.getItem("todos")
-    ? JSON.parse(localStorage.getItem("todos"))
-    : [];
-  todos.push({ text: todoText, completed: false });
-  localStorage.setItem("todos", JSON.stringify(todos));
-}
-
-/**
  * Retrieves todos from local storage and displays them.
  */
 
@@ -152,26 +132,6 @@ function getTodos() {
 }
 
 /**
- * Updates the state of the todo (completed or not) in local storage.
- * @param {HTMLDivElement} todo - The todo element.
- */
-
-function updateTodoState(todo) {
-  const todoText = todo.querySelector(".todo-item").innerText;
-  let todos = localStorage.getItem("todos")
-    ? JSON.parse(localStorage.getItem("todos"))
-    : [];
-
-  todos.forEach((todoItem) => {
-    if (todoItem.text === todoText) {
-      todoItem.completed = todo.classList.contains("completed");
-    }
-  });
-
-  localStorage.setItem("todos", JSON.stringify(todos));
-}
-
-/**
  * Edits the text of the todo.
  * @param {HTMLDivElement} todo - The todo element.
  */
@@ -183,19 +143,4 @@ function editTodo(todo) {
 
   removeLocalTodos(todo);
   todo.remove();
-}
-
-/**
- * Removes the todo from local storage.
- * @param {HTMLDivElement} todo - The todo element.
- */
-
-function removeLocalTodos(todo) {
-  const todoText = todo.querySelector(".todo-item").innerText;
-  let todos = localStorage.getItem("todos")
-    ? JSON.parse(localStorage.getItem("todos"))
-    : [];
-
-  todos = todos.filter((todoItem) => todoItem.text !== todoText);
-  localStorage.setItem("todos", JSON.stringify(todos));
 }
