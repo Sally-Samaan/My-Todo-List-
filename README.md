@@ -35,6 +35,10 @@ To run the Todo List App locally, follow these steps:
 - components
   - button.js
   - filter.js
+  - todoElement.js
+  - todoActions.js
+  - todoList.js
+  - editTodo.js
 - utils
   - localStorage.js
 
