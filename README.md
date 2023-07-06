@@ -23,7 +23,7 @@ The Todo List App is a simple web application that allows users to manage their 
 
 To run the Todo List App locally, follow these steps:
 
-1. Clone the repository: `git clone <[repository-url](https://github.com/Sally-Samaan/My-Todo-List-.git)>`
+1. Clone the repository: `git clone <[repository-url]>`
 2. Navigate to the project directory: `cd My-Todo-List-`
 3. Open the `index.html` file in a web browser
 
